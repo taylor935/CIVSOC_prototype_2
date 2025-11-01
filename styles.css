@@ -407,7 +407,7 @@ footer .copyright-statement {
 
 /* ================= WHAT WE DO (BANDS) ================= */
 #what-we-do { text-align: center; overflow: hidden; margin: 50px 0; }
-#what-we-do .wwd-wrapper { display: flex; justify-content: center; align-items: center; gap: 40px; flex-wrap: wrap; }
+#what-we-do .wwd-wrapper { display: flex; justify-content: center; align-items: flex-start; gap: 40px; flex-wrap: wrap; }
 #what-we-do h2 {
   font-size: clamp(2rem, 6vw, 4rem);
   letter-spacing: clamp(0.1rem, 0.5vw, 1rem);
@@ -420,14 +420,51 @@ footer .copyright-statement {
   text-shadow: 1px 1px 5px rgba(0,0,0,0.15);
 }
 #what-we-do .bands-container { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 5px; transition: transform 0.3s ease, text-shadow 0.3s ease; will-change: transform, text-shadow; }
+#what-we-do .bands-container p { width: 200px; text-align: center; margin: 0; line-height: 1.4; }
 #what-we-do .bands-container:nth-child(1) { border-left: 10px solid var(--accent-3); }
 #what-we-do .bands-container:nth-child(2) { border-left: 10px solid var(--accent-1); }
 #what-we-do .bands-container:nth-child(3) { border-left: 10px solid var(--accent-2); }
 #what-we-do figure { width: 200px; height: 200px; margin: 0; overflow: hidden; background: #fff; position: relative; z-index: 1; transition: transform .3s ease, box-shadow .3s ease; will-change: transform, box-shadow; }
 #what-we-do figure img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
 #what-we-do figure figcaption { position: absolute; bottom: 5px; right: 0; color: #fff; text-transform: uppercase; font-weight: 700; font-size: 2em; white-space: nowrap; transform: scaleY(2); transition: transform .3s ease, text-shadow .3s ease; }
-#what-we-do figure figcaption:hover { transform: scaleX(1.05); text-shadow: 0 8px 10px rgba(0,0,0,0.4); }
-#what-we-do .bands-container:hover { transform: scale(1.05); text-shadow: 0 8px 10px rgba(0,0,0,0.4); }
+#what-we-do figure figcaption:hover { transform: scaleX(1.05);}
+#what-we-do .bands-container:hover { transform: scale(1.05);}
+
+#what-we-do.no-borders .bands-container:nth-child(1),
+#what-we-do.no-borders .bands-container:nth-child(2),
+#what-we-do.no-borders .bands-container:nth-child(3) {
+  border-left: none !important;
+}
+
+#what-we-do.no-borders a { text-decoration: none !important; color: inherit !important; }
+#what-we-do.no-borders h3 { color: #646363 !important; text-decoration: none !important; font-weight: 800; font-size: 2rem; text-transform: uppercase;}
+#what-we-do.no-borders a h3,
+#what-we-do.no-borders a:link h3,
+#what-we-do.no-borders a:visited h3,
+#what-we-do.no-borders a:hover h3,
+#what-we-do.no-borders a:active h3 {
+  color: #333 !important;
+  text-decoration: none !important;
+}
+#what-we-do.no-borders a:hover h3 { color: #222 !important; }
+
+#what-we-do.no-borders .wwd-wrapper { align-items: flex-start; }
+#what-we-do.no-borders .bands-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#what-we-do.no-borders .bands-container figure,
+#what-we-do.no-borders .bands-container p { width: 220px; }
+#what-we-do.no-borders .bands-container p {
+  text-align: center;
+  margin-top: 10px;
+  min-height: 80px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
 
 @media (max-width: 720px) {
   #what-we-do .wwd-wrapper { flex-direction: column; align-items: center; }
@@ -441,6 +478,7 @@ footer .copyright-statement {
   color: #000;
   background-size: cover;
   background-position: center;
+  padding: 100px;
 }
 .mahi::before {
   content: "";
@@ -454,6 +492,22 @@ footer .copyright-statement {
 }
 .mahi .text-content { flex: 1 1 auto; min-width: 250px; color: black; font-size: 1.1em; line-height: 1.6; text-align: left; }
 
+.mahi::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.85);
+  z-index: 0;
+}
+
+.mahi-alt {
+  color: white;
+}
+.mahi-alt::before {
+  background: rgba(0,0,0,0.85);
+}
+.mahi-alt .text-content {
+  color: white;
+}
 @media (max-width: 1200px) {
   .mahi .content-row { flex-direction: column; align-items: center; gap: 20px; }
   .mahi .content-row img, .mahi .text-content { width: 90%; }
